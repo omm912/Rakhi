@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💖 Rakhi Magic for Kamala 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #e84393;
+            --secondary: #fd79a8;
+            --accent: #6c5ce7;
+            --light: #ffeaa7;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #fff5f5 0%, #fce4ec 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        h1 {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary);
+            font-size: 3.5rem;
+            margin: 1rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        .header {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .header::after {
+            content: "";
+            display: block;
+            width: 150px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            margin: 0 auto;
+            border-radius: 3px;
+        }
+        
+        .rakhi-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+            margin: 2rem auto;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+        
+        .rakhi {
+            width: 100%;
+            height: 100%;
+            background-image: url('https://i.ibb.co/0jqXQ3S/rakhi2.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        .message-box {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(232, 67, 147, 0.15);
+            margin: 2rem 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+        
+        .message-box::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+        
+        .message-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(232, 67, 147, 0.25);
+        }
+        
+        .sister-name {
+            font-family: 'Dancing Script', cursive;
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: inline-block;
+            transform: rotate(-5deg);
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            margin: 1.5rem 0;
+            transition: all 0.4s;
+            box-shadow: 0 4px 15px rgba(232, 67, 147, 0.4);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(232, 67, 147, 0.6);
+        }
+        
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary), var(--accent));
+            z-index: -1;
+            transition: opacity 0.4s;
+            opacity: 0;
+            border-radius: 50px;
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .hidden {
+            display: none;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .visible {
+            display: block;
+            animation: fadeInUp 0.8s forwards;
+        }
+        
+        .promise-box {
+            background: linear-gradient(135deg, #f6e58d 0%, #ffbe76 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 15px rgba(255, 190, 118, 0.3);
+            border-left: 5px solid var(--accent);
+        }
+        
+        .footer {
+            margin-top: 3rem;
+            font-style: italic;
+            color: #888;
+            text-align: center;
+        }
+        
+        .heart {
+            color: var(--primary);
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+        
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .magic-heart {
+            position: absolute;
+            font-size: 30px;
+            pointer-events: none;
+            animation: magicHeart 2s linear forwards;
+            z-index: 10;
+        }
+        
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @keyframes floatHeart {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes magicHeart {
+            0% {
+                transform: scale(0.5) translateY(0);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5) translateY(-50px);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(2) translateY(-100px);
+                opacity: 0;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .rakhi-container {
+                width: 200px;
+                height: 200px;
+            }
+            
+            .message-box {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-hearts" id="heartsContainer"></div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>Happy Rakshabandhan, <span class="sister-name">Kamala</span>!</h1>
+        </div>
+        
+        <div class="rakhi-container" id="rakhiClickArea">
+            <div class="rakhi"></div>
+        </div>
+        
+        <div class="message-box">
+            <p>Dear <span class="sister-name">Kamala</span>,</p>
+            <p>As I tie this Rakhi around your wrist (virtually!), I'm reminded of all the beautiful memories we've created together. You're not just my sister - you're my lifelong friend, my confidante, and my partner in all our mischiefs!</p>
+            <p>This thread symbolizes my promise to always stand by you, protect you, and annoy you (because what's a brother-sister relationship without some teasing?).</p>
+            <p>Wishing you endless happiness, success in all your endeavors, and a life filled with love and laughter!</p>
+        </div>
+        
+        <button class="btn" id="surpriseBtn">Click for Your Special Gift <span class="heart">❤️</span></button>
+        
+        <div id="specialMessage" class="hidden">
+            <div class="message-box">
+                <p><span class="sister-name">Kamala</span>, my dearest sister,</p>
+                <p>Today, I want you to know how much you mean to me. Through every laugh, every tear, and every adventure, you've made my life richer.</p>
+                
+                <div class="promise-box">
+                    <p>I promise to:</p>
+                    <ul style="text-align: left; padding-left: 1.5rem;">
+                        <li>Always have your back, no matter what</li>
+                        <li>Be your personal cheerleader in all your dreams</li>
+                        <li>Share the last piece of dessert (most of the time!)</li>
+                        <li>Keep embarrassing you with childhood stories</li>
+                        <li>Love you unconditionally, today and always</li>
+                    </ul>
+                </div>
+                
+                <p>Thank you for being you. Here's to many more years of shared secrets, inside jokes, and sibling love!</p>
+                <p>With all my heart,<br>Your Brother</p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 2rem;">
+                <p style="font-size: 1.3rem;">Click on the Rakhi to see magic hearts!</p>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Made with <span class="heart">❤️</span> for the world's best sister</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create floating hearts background
+            createHearts();
+            
+            // Surprise button functionality
+            const surpriseBtn = document.getElementById('surpriseBtn');
+            const specialMessage = document.getElementById('specialMessage');
+            
+            surpriseBtn.addEventListener('click', function() {
+                specialMessage.classList.add('visible');
+                this.style.display = 'none';
+                
+                // Create more hearts when button is clicked
+                for (let i = 0; i < 30; i++) {
+                    setTimeout(() => createHeart(true), i * 100);
+                }
+            });
+            
+            // Magic hearts when clicking on Rakhi
+            const rakhiClickArea = document.getElementById('rakhiClickArea');
+            rakhiClickArea.addEventListener('click', function(e) {
+                createMagicHeart(e);
+            });
+        });
+        
+        function createHearts() {
+            const colors = ['#e84393', '#fd79a8', '#6c5ce7', '#00cec9', '#00b894', '#ffeaa7'];
+            const container = document.getElementById('heartsContainer');
+            
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => createHeart(false), i * 300);
+            }
+        }
+        
+        function createHeart(clicked) {
+            const colors = ['#e84393', '#fd79a8', '#6c5ce7', '#00cec9', '#00b894', '#ffeaa7'];
+            const container = document.getElementById('heartsContainer');
+            
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.style.position = 'absolute';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
+            heart.style.opacity = '0.7';
+            heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+            heart.style.animation = `floatHeart ${Math.random() * 6 + 4}s linear forwards`;
+            heart.style.animationDelay = clicked ? '0s' : Math.random() * 3 + 's';
+            
+            container.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+        
+        function createMagicHeart(event) {
+            const heart = document.createElement('div');
+            heart.className = 'magic-heart';
+            heart.innerHTML = '❤️';
+            heart.style.left = (event.clientX - 15) + 'px';
+            heart.style.top = (event.clientY - 15) + 'px';
+            heart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 65%)`;
+            
+            document.body.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+            
+            // Create additional smaller hearts
+            for (let i = 0; i < 5; i++) {
+                setTimeout(() => {
+                    const smallHeart = document.createElement('div');
+                    smallHeart.className = 'magic-heart';
+                    smallHeart.innerHTML = '❤️';
+                    smallHeart.style.left = (event.clientX - 10 + Math.random() * 40 - 20) + 'px';
+                    smallHeart.style.top = (event.clientY - 10 + Math.random() * 40 - 20) + 'px';
+                    smallHeart.style.fontSize = '20px';
+                    smallHeart.style.color = `hsl(${Math.random() * 60 + 330}, 100%, 65%)`;
+                    smallHeart.style.animation = `magicHeart ${Math.random() * 1 + 1}s linear forwards`;
+                    
+                    document.body.appendChild(smallHeart);
+                    
+                    setTimeout(() => {
+                        smallHeart.remove();
+                    }, 2000);
+                }, i * 100);
+            }
+        }
+    </script>
+</body>
+  </html>
